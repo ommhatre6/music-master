@@ -6,11 +6,11 @@ const Artist = ({artist}) => {
     const { images, name, followers, genres }= artist;
     
     return (
-        <div>
+        <div className='artist-container'>
         <h3>{name}</h3>
-        <p>{followers.total}Followers</p>
-        <p>{genres.join(',')}</p>
-        <img src= {images[0] && images[0].url} alt='artist-profile' style={{width:200,height:200,borderRadius:100}}/>
+        <p className='artist-followers'>{followers.total} Followers</p>
+        <p className='artist-genres'>{genres.join(',')}</p>
+        <img src= {images[0] && images[0].url} alt='artist-profile' style={{width:200,height:200,borderRadius:100,objectFit:'cover'}} className='artist-image'/>
 
         </div>
     )

@@ -1,13 +1,241 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'Poppins';
+  src: url(Assets/Poppins-Light.ttf);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  text-align: center;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  background-color: #f8f9fa; /* Light background for contrast */
+  margin: 0;
+  padding: 0;
 }
+
+.TrackContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Space between each track */
+  padding: 40px; /* Adds more padding around the container */
+}
+
+.track {
+  width: 250px;
+  height: 250px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 12px; /* More pronounced rounding */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
+}
+
+.track:hover {
+  transform: scale(1.05); /* Slightly enlarges on hover */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Intensifies shadow on hover */
+}
+
+.track-images {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  transition: opacity 0.3s ease; /* Smooth transition for image overlay */
+}
+
+.track-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background for text overlay */
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  opacity: 0; /* Hidden initially */
+  transition: opacity 0.3s ease; /* Smooth fade-in on hover */
+}
+
+.track:hover .track-info {
+  opacity: 1; /* Shows text overlay on hover */
+}
+
+.track-images:hover {
+  opacity: 0.85; /* Adds slight dimming effect on hover */
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+button:focus {
+  outline: none;
+}
+
+.search-container {
+  margin: 20px 0; /* Spacing around the search area */
+  display: flex;
+  justify-content: center; /* Center the input and button */
+}
+
+.search-container input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc; /* Light border for input */
+  border-radius: 8px 0 0 8px; /* Rounded corners for the left side */
+  outline: none; /* Remove default outline */
+  transition: border-color 0.3s ease; /* Smooth border color change */
+}
+
+.search-container input:focus {
+  border-color: #007bff; /* Change border color on focus */
+}
+
+.search-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 0 8px 8px 0; /* Rounded corners for the right side */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Artist Component Styles */
+.artist-container {
+  margin: 20px; /* Spacing around the artist section */
+  padding: 20px;
+  background-color: #fff; /* Background color for the artist card */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.artist-container h3 {
+  font-size: 24px; /* Larger font size for the artist's name */
+  margin: 10px 0; /* Spacing above and below */
+}
+
+.artist-container p {
+  margin: 5px 0; /* Spacing for follower count and genres */
+  font-size: 16px; /* Font size for details */
+  color: #666; /* Lighter color for secondary text */
+}
+
+.artist-container img {
+  width: 200px; /* Set width for the artist image */
+  height: 200px; /* Set height for uniformity */
+  border-radius: 100px; /* Circular image */
+  object-fit: cover; /* Maintain aspect ratio */
+  margin-top: 10px; /* Spacing above the image */
+}
+
+.artist-container {
+  text-align: center; /* Center-align text */
+  margin: 30px; /* Increased margin for more space */
+  padding: 20px; /* Padding for inner spacing */
+  background-color: #ffffff; /* White background for contrast */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s; /* Smooth transform for hover effect */
+}
+
+.artist-container:hover {
+  transform: translateY(-5px); /* Slight lift on hover for interactivity */
+}
+
+.artist-name {
+  font-size: 24px; /* Larger font for artist name */
+  font-weight: bold; /* Bold weight for emphasis */
+  color: #333; /* Dark color for readability */
+  margin-bottom: 10px; /* Space below name */
+}
+
+.artist-followers {
+  font-size: 18px; /* Size for followers text */
+  color: #555; /* Darker gray for contrast */
+  margin: 5px 0; /* Space above and below */
+  font-weight: 500; /* Medium weight */
+}
+
+.artist-genres {
+  font-size: 16px; /* Size for genres text */
+  color: #777; /* Lighter gray for differentiation */
+  margin: 5px 0; /* Space above and below */
+  font-style: italic; /* Italic for stylistic differentiation */
+}
+
+.artist-image {
+  width: 200px; /* Fixed size */
+  height: 200px; /* Fixed size */
+  border-radius: 100px; /* Round image */
+  object-fit: cover; /* Crop to fit */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Slight shadow for depth */
+  margin-bottom: 15px; /* Space below image */
+}
+
+.search-container {
+  display: flex; /* Align items in a row */
+  justify-content: center; /* Center the items */
+  margin: 20px 0; /* Margin above and below the search bar */
+}
+
+.search-input {
+  height: 50px; /* Set a specific height */
+  padding: 0 15px; /* Padding for left and right */
+  font-size: 16px; /* Font size for input */
+  border: 2px solid #007bff; /* Border color to match the button */
+  border-radius: 8px 0 0 8px; /* Rounded corners on the left */
+  outline: none; /* Remove default outline */
+  transition: border-color 0.3s; /* Transition effect on focus */
+}
+
+.search-input:focus {
+  border-color: #0056b3; /* Darker blue on focus */
+}
+
+.search-button {
+  height: 50px; /* Match height with input */
+  padding: 0 20px; /* Padding for button */
+  font-size: 16px; /* Match font size with input */
+  font-weight: 600; /* Bold weight for emphasis */
+  color: #fff; /* White text */
+  background-color: #007bff; /* Button color */
+  border: none; /* Remove default border */
+  border-radius: 0 8px 8px 0; /* Rounded corners on the right */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.search-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+
